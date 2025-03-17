@@ -1,10 +1,12 @@
 import streamlit as st
 import time
+
 from accueil import show_accueil
 from page1 import show_page1
 from page2 import show_page2
 from page3 import show_page3
 from page4 import show_page4
+from account import show_account
 
 def main():
     if "username" not in st.session_state:
@@ -24,7 +26,7 @@ def main():
 
     else:
         st.sidebar.title("Navigation")
-        page = st.sidebar.radio("Aller à", ["Accueil", "Page 1", "Page 2", "Page 3", "Page 4"])
+        page = st.sidebar.radio("Aller à", ["Accueil", "Page 1", "Page 2", "Page 3", "Page 4", "Compte"])
         
         if page == "Accueil":
             show_accueil(st.session_state.username)
@@ -36,6 +38,8 @@ def main():
             show_page3()
         elif page == "Page 4":
             show_page4()
+        elif page == "Compte":
+            show_account()
 
 if __name__ == "__main__":
     main()
