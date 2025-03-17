@@ -4,7 +4,6 @@ from accueil import show_accueil
 from page1 import show_page1
 from page2 import show_page2
 from page3 import show_page3
-from page4 import show_page4
 
 def main():
     if "username" not in st.session_state:
