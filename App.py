@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import time
 
 def show_graph(name):
-    st.success(f"Bonjour {name} 👋")
+    st.success(f"Bonjour Bonjour{name} 👋")
     st.subheader("Graphique des ventes")
     
     # Données fictives
