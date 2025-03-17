@@ -1,30 +1,10 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import time
 
-def show_home():
-    st.subheader("Bienvenue sur l'application")
-    st.write("Utilisez le menu pour naviguer entre les pages.")
-
-def show_login():
-    st.subheader("Se connecter")
-    username = st.text_input("Nom d'utilisateur")
-    password = st.text_input("Mot de passe", type="password")
-    if st.button("Connexion"):
-        st.success("Connexion réussie (fictif) !")
-
-def show_register():
-    st.subheader("Créer un compte")
-    new_username = st.text_input("Nom d'utilisateur")
-    new_password = st.text_input("Mot de passe", type="password")
-    confirm_password = st.text_input("Confirmer le mot de passe", type="password")
-    if st.button("S'inscrire"):
-        if new_password == confirm_password:
-            st.success("Compte créé avec succès (fictif) !")
-        else:
-            st.error("Les mots de passe ne correspondent pas")
-
-def show_graph():
+def show_graph(name):
+    st.success(f"Bonjour {name} 👋")
     st.subheader("Graphique des ventes")
     
     # Données fictives
@@ -48,17 +28,21 @@ def show_graph():
     st.download_button("Télécharger les données", data=csv, file_name="ventes.csv", mime="text/csv")
 
 def main():
-    st.sidebar.title("Navigation")
-    page = st.sidebar.radio("Aller à", ["Accueil", "Connexion", "Inscription", "Graphique"])
+    if "username" not in st.session_state:
+        st.session_state.username = ""
     
-    if page == "Accueil":
-        show_home()
-    elif page == "Connexion":
-        show_login()
-    elif page == "Inscription":
-        show_register()
-    elif page == "Graphique":
-        show_graph()
+    
+    if st.session_state.username == "":
+        st.subheader("Connexion")
+        username = st.text_input("Entrez votre nom")
+        password = st.text_input("Mot de passe", type="password")
+        if st.button("Se connecter"):
+            st.success("Connexion réussie !")
+            time.sleep(1)
+            st.session_state.username = username
+            st.rerun()
+    else:
+        show_graph(st.session_state.username)
 
 if __name__ == "__main__":
     main()
