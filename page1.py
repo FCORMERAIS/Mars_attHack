@@ -6,6 +6,8 @@ from streamlit_calendar import calendar
 def show_page1():
     #  Configuration de la page
     st.title("📅 Mon Agenda Hebdomadaire")
+    st.title("Page 1")
+    st.write("Contenu de la page 1.")
 
     st.write("""
     Ajoutez et gérez vos événements avec un affichage **hebdomadaire avec horaires**.  
