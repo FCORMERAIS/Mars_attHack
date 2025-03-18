@@ -1,12 +1,11 @@
 import streamlit as st
 import time
 
-from accueil import show_accueil
-from page1 import show_amelioration
-from page2 import show_page2
-from page3 import show_page3
-from page4 import show_page4
-from account import show_account
+from pages.Accueil import show_accueil
+from pages.Calendrier import show_calendrier
+from pages.Amlioration import show_amelioration
+from pages.Dashboard import show_dashboard
+from pages.account import show_account
 
 def main():
     if "username" not in st.session_state:
@@ -45,9 +44,9 @@ def main():
         elif page == "Amelioration":
             show_amelioration()
         elif page ==  "Tableaux de bord":
-            show_page2(st.session_state.username)
+            show_dashboard(st.session_state.username)
         elif page == "Calendrier":
-            show_page1()
+            show_calendrier()
         elif page == "Compte":
             show_account()
 
