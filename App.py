@@ -10,7 +10,6 @@ def main():
     if "username" not in st.session_state:
         st.session_state.username = ""
     
-    
     if st.session_state.username == "":
         st.subheader("Connexion")
         username = st.text_input("Entrez votre nom")
@@ -21,20 +20,32 @@ def main():
             st.session_state.username = username
             st.session_state.page = "Accueil"
             st.rerun()
-
     else:
         st.sidebar.title("Navigation")
-        page = st.sidebar.radio("Aller à", ["Accueil", "Page 1", "Page 2", "Page 3", "Page 4"])
+        
+        st.sidebar.markdown("---")
+        if st.sidebar.button("🏠 Accueil", use_container_width=True):
+            st.session_state.page = "Accueil"
+        if st.sidebar.button("🚀 Amélioration", use_container_width=True):
+            st.session_state.page = "Amelioration"
+        if st.sidebar.button("📅 Calendrier", use_container_width=True):
+            st.session_state.page = "Calendrier"
+        if st.sidebar.button("📊 Tableaux de bord", use_container_width=True):
+            st.session_state.page = "Tableaux de bord"
+        if st.sidebar.button("👤 Compte", use_container_width=True):
+            st.session_state.page = "Compte"
+        
+        page = st.session_state.get("page", "Accueil")
         
         if page == "Accueil":
             show_accueil(st.session_state.username)
-        elif page == "Page 1":
+        elif page == "Amelioration":
             show_page1()
-        elif page == "Page 2":
+        elif page == "Calendrier":
             show_page2()
-        elif page == "Page 3":
+        elif page == "Tableaux de bord":
             show_page3()
-        elif page == "Page 4":
+        elif page == "Compte":
             show_page4()
 
 if __name__ == "__main__":
