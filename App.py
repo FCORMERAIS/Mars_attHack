@@ -1,11 +1,11 @@
 import streamlit as st
 import time
 
-from pages.Accueil import show_accueil
-from pages.Calendrier import show_calendrier
-from pages.Amlioration import show_amelioration
-from pages.Dashboard import show_dashboard
-from pages.account import show_account
+from templates.Accueil import show_accueil
+from templates.Calendrier import show_calendrier
+from templates.Amlioration import show_amelioration
+from templates.Dashboard import show_dashboard
+from templates.Account import show_account
 
 def main():
     nav_image_url = "https://cdn-icons-png.flaticon.com/128/1738/1738691.png"
@@ -51,7 +51,7 @@ def main():
         elif page == "Amelioration":
             show_amelioration()
         elif page ==  "Tableaux de bord":
-            show_dashboard(st.session_state.username)
+            show_dashboard()
         elif page == "Calendrier":
             show_calendrier()
         elif page == "Compte":

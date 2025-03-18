@@ -6,7 +6,7 @@ import pandas as pd
 import folium
 from streamlit_folium import st_folium
 
-def show_dashboard(username):
+def show_dashboard():
     
     today = dt.datetime.now()
     next_year = today.year
