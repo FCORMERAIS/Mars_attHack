@@ -31,7 +31,7 @@ def main():
         elif page == "Page 1":
             show_page1()
         elif page == "Page 2":
-            show_page2()
+            show_page2(st.session_state.username)
         elif page == "Page 3":
             show_page3()
         elif page == "Page 4":
