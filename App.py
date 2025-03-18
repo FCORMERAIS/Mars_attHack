@@ -8,6 +8,8 @@ from pages.Dashboard import show_dashboard
 from pages.account import show_account
 
 def main():
+    nav_image_url = "https://cdn-icons-png.flaticon.com/128/1738/1738691.png"
+
     if "username" not in st.session_state:
         st.session_state.username = ""
     
@@ -22,7 +24,7 @@ def main():
             st.session_state.page = "Accueil"
             st.rerun()
     else:
-        st.sidebar.title("Navigation")
+        st.sidebar.markdown(f'<img src="{nav_image_url}" width="100" style="display: block; margin-left: auto; margin-right: auto;">', unsafe_allow_html=True)
 
         
         st.sidebar.markdown("---")
@@ -36,6 +38,11 @@ def main():
             st.session_state.page = "Tableaux de bord"
         if st.sidebar.button("👤 Compte", use_container_width=True):
             st.session_state.page = "Compte"
+        # Bouton Déconnexion avec redirection vers Connexion
+        if st.sidebar.button("🔓 Déconnexion", use_container_width=True):
+            st.session_state.username = ""
+            st.session_state.page = "Connexion"
+            st.rerun()
         
         page = st.session_state.get("page", "Accueil")
         
