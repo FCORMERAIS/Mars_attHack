@@ -44,9 +44,9 @@ def main():
             show_accueil(st.session_state.username)
         elif page == "Amelioration":
             show_page1()
+        elif page ==  "Tableaux de bord":
+            show_page2(st.session_state.username)
         elif page == "Calendrier":
-            show_page2()
-        elif page == "Tableaux de bord":
             show_page3()
         elif page == "Compte":
             show_account()
